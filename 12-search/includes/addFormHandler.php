@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $itemPrice = htmlspecialchars($_POST["itemPrice"]);
 
     try {
-
+    // handling error logic 
     if(empty($itemName)||empty($itemQty)||empty($itemPrice)){
         $_SESSION['feedback'] = [
             'type' => 'danger',
@@ -30,9 +30,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $pdo = null;
         $stmt = null;
 
+        // CREATING SUCCESS / ERROR MESSAGE
         $_SESSION['feedback'] = [
-            'type' => 'success',
-            'text' => 'Added Successfully'
+            'type' => 'success', // will put inside on class for bootstrap error message
+            'text' => 'Added Successfully' // message that will display
         ];
         
         header("Location: ../index.php");

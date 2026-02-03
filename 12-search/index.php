@@ -6,8 +6,8 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<?
-    
+<?php
+    // SAFE WAY TO START A SESSION
     if (session_status() === PHP_SESSION_NONE){
         session_start();
     }
@@ -16,8 +16,10 @@
     <div class="container min-vh-100 d-flex flex-column align-items-center justify-content-center ">
         <!-- DISPLAY SUCCESS/ERROR MESSAGE HERE -->
         <?php
+        // kapag meron laman ang feedback
             if(!empty($_SESSION['feedback'])){
                 $msg = $_SESSION['feedback'];
+                // using the 'type' on class
                 echo '<div class="alert alert-'.htmlspecialchars($msg['type']) .'">' . htmlspecialchars($msg['text']) . '</div>';
 unset($_SESSION['feedback']);
             }
